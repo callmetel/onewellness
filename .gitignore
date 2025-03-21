@@ -5,23 +5,22 @@
 #
 # Note: if you want to stage/commit WP core files
 # you can delete this whole section/until Configuration.
-/wp-admin/
-/wp-content/index.php
-/wp-content/languages
-/wp-content/plugins/index.php
-/wp-content/themes/index.php
-/wp-includes/
-/index.php
-/license.txt
-/readme.html
-/wp-*.php
-/xmlrpc.php
+# ignore everything in the root except the "wp-content" directory.
+/*
+!wp-content/
+!login.js
+!docker-compose.yml
+!README.md
 
-# Configuration
-wp-config.php
+# ignore everything in the "wp-content" directory, except:
+# "mu-plugins", "plugins", "themes" directory
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/plugins/
+!wp-content/themes/
 
-# Example themes
-/wp-content/themes/twenty*/
+# ignore specific themes
+wp-content/themes/twenty*/
 
 # Example plugin
 /wp-content/plugins/hello.php
@@ -46,3 +45,48 @@ wp-config.php
 # Note: If you wish to whitelist themes,
 # uncomment the next line
 #/wp-content/themes
+
+# ignore node dependency directories
+node_modules/
+bower_components/
+!wp-content/themes/divi-child-theme/src/scss/bower_components/
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+*.htaccess
+*.wpress
+.DS_Store
+composer.lock
+package-lock.json
+
+
+# ignore packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# track these files, if they exist
+!.gitignore
+!.editorconfig
+!.phpcs.xml.dist
+!README.md
+!CHANGELOG.md
+!composer.json
+
+# track favicon files, if they exist
+!android-chrome-*.png
+!apple-touch-icon*.png
+!browserconfig.xml
+!favicon*.png
+!favicon*.ico
+!manifest.json
+!mstile-*.png
+!safari-pinned-tab.svg
+!site.webmanifest
