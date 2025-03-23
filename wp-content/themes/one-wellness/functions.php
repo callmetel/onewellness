@@ -1,4 +1,5 @@
 <?php
+
 /**
  * one wellness functions and definitions
  *
@@ -7,9 +8,9 @@
  * @package one_wellness
  */
 
-if ( ! defined( '_S_VERSION' ) ) {
+if (! defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+	define('_S_VERSION', '1.0.0');
 }
 
 /**
@@ -19,17 +20,86 @@ if ( ! defined( '_S_VERSION' ) ) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function one_wellness_setup() {
+function one_wellness_setup()
+{
+	add_theme_support("editor-styles");
+	add_editor_style("style-editor.css");
+
+	add_theme_support("responsive-embeds");
+
+	add_theme_support("align-wide");
+
+	add_theme_support("editor-color-palette", array(
+		array(
+			'name'  => esc_attr__('deep blue', 'themeLangDomain'),
+			'slug'  => 'deep-blue',
+			'color' => '#001b34',
+		),
+		array(
+			'name'  => esc_attr__('yale blue', 'themeLangDomain'),
+			'slug'  => 'yale-blue',
+			'color' => '#073765',
+		),
+		array(
+			'name'  => esc_attr__('gold', 'themeLangDomain'),
+			'slug'  => 'gold',
+			'color' => '#FAA916',
+		),
+		array(
+			'name'  => esc_attr__('bright white', 'themeLangDomain'),
+			'slug'  => 'bright-white',
+			'color' => '#FBFFFE',
+		),
+		array(
+			'name'  => esc_attr__('baby blue', 'themeLangDomain'),
+			'slug'  => 'baby-blue',
+			'color' => '#4392F1',
+		),
+		array(
+			'name'  => esc_attr__('yellow', 'themeLangDomain'),
+			'slug'  => 'yellow',
+			'color' => '#ffc761',
+		),
+		array(
+			'name'  => esc_attr__('gray', 'themeLangDomain'),
+			'slug'  => 'gray',
+			'color' => '#808080',
+		),
+	));
+
+	add_theme_support("disable-custom-colors");
+
+	add_theme_support("editor-font-sizes", array(
+		array(
+			'name' => esc_attr__('Small', 'themeLangDomain'),
+			'size' => 12,
+			'slug' => 'small'
+		),
+		array(
+			'name' => esc_attr__('Regular', 'themeLangDomain'),
+			'size' => 16,
+			'slug' => 'regular'
+		),
+		array(
+			'name' => esc_attr__('Large', 'themeLangDomain'),
+			'size' => 36,
+			'slug' => 'large'
+		)
+	));
+
+	add_theme_support("disable-custom-font-sizes");
+
+	add_theme_support("custom-spacing");
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
 		* If you're building a theme based on one wellness, use a find and replace
 		* to change 'one-wellness' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain( 'one-wellness', get_template_directory() . '/languages' );
+	load_theme_textdomain('one-wellness', get_template_directory() . '/languages');
 
 	// Add default posts and comments RSS feed links to head.
-	add_theme_support( 'automatic-feed-links' );
+	add_theme_support('automatic-feed-links');
 
 	/*
 		* Let WordPress manage the document title.
@@ -37,19 +107,19 @@ function one_wellness_setup() {
 		* hard-coded <title> tag in the document head, and expect WordPress to
 		* provide it for us.
 		*/
-	add_theme_support( 'title-tag' );
+	add_theme_support('title-tag');
 
 	/*
 		* Enable support for Post Thumbnails on posts and pages.
 		*
 		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		*/
-	add_theme_support( 'post-thumbnails' );
+	add_theme_support('post-thumbnails');
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'one-wellness' ),
+			'menu-1' => esc_html__('Primary', 'one-wellness'),
 		)
 	);
 
@@ -83,7 +153,7 @@ function one_wellness_setup() {
 	);
 
 	// Add theme support for selective refresh for widgets.
-	add_theme_support( 'customize-selective-refresh-widgets' );
+	add_theme_support('customize-selective-refresh-widgets');
 
 	/**
 	 * Add support for core custom logo.
@@ -100,7 +170,7 @@ function one_wellness_setup() {
 		)
 	);
 }
-add_action( 'after_setup_theme', 'one_wellness_setup' );
+add_action('after_setup_theme', 'one_wellness_setup');
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -109,22 +179,24 @@ add_action( 'after_setup_theme', 'one_wellness_setup' );
  *
  * @global int $content_width
  */
-function one_wellness_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'one_wellness_content_width', 640 );
+function one_wellness_content_width()
+{
+	$GLOBALS['content_width'] = apply_filters('one_wellness_content_width', 640);
 }
-add_action( 'after_setup_theme', 'one_wellness_content_width', 0 );
+add_action('after_setup_theme', 'one_wellness_content_width', 0);
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function one_wellness_widgets_init() {
+function one_wellness_widgets_init()
+{
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'one-wellness' ),
+			'name'          => esc_html__('Sidebar', 'one-wellness'),
 			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'one-wellness' ),
+			'description'   => esc_html__('Add widgets here.', 'one-wellness'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -132,22 +204,23 @@ function one_wellness_widgets_init() {
 		)
 	);
 }
-add_action( 'widgets_init', 'one_wellness_widgets_init' );
+add_action('widgets_init', 'one_wellness_widgets_init');
 
 /**
  * Enqueue scripts and styles.
  */
-function one_wellness_scripts() {
-	wp_enqueue_style( 'one-wellness-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'one-wellness-style', 'rtl', 'replace' );
+function one_wellness_scripts()
+{
+	wp_enqueue_style('one-wellness-style', get_stylesheet_uri(), array(), _S_VERSION);
+	wp_style_add_data('one-wellness-style', 'rtl', 'replace');
 
-	wp_enqueue_script( 'one-wellness-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script('one-wellness-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
+	if (is_singular() && comments_open() && get_option('thread_comments')) {
+		wp_enqueue_script('comment-reply');
 	}
 }
-add_action( 'wp_enqueue_scripts', 'one_wellness_scripts' );
+add_action('wp_enqueue_scripts', 'one_wellness_scripts');
 
 /**
  * Implement the Custom Header feature.
@@ -172,7 +245,6 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Load Jetpack compatibility file.
  */
-if ( defined( 'JETPACK__VERSION' ) ) {
+if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
-

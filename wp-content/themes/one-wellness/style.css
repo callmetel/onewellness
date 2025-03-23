@@ -72,6 +72,78 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	margin: 0 auto;
 }
 
+.has-deep-blue-color {
+	color: #001b34;
+}
+
+.has-deep-blue-background-color {
+	background-color: #001b34;
+}
+
+.has-yale-blue-color {
+	color: #073765;
+}
+
+.has-yale-blue-background-color {
+	background-color: #073765;
+}
+
+.has-gold-color {
+	color: #FAA916;
+}
+
+.has-gold-background-color {
+	background-color: #FAA916;
+}
+
+.has-bright-white-color {
+	color: #FBFFFE;
+}
+
+.has-bright-white-background-color {
+	background-color: #FBFFFE;
+}
+
+.has-baby-blue-color {
+	color: #4392F1;
+}
+
+.has-baby-blue-background-color {
+	background-color: #4392F1;
+}
+
+.has-yellow-color {
+	color: #ffc761;
+}
+
+.has-yellow-background-color {
+	background-color: #ffc761;
+}
+
+.has-gray-color {
+	color: #808080;
+}
+
+.has-gray-background-color {
+	background-color: #808080;
+}
+
+.has-small-font-size {
+	font-size: 12px;
+}
+
+.has-regular-font-size {
+	font-size: 16px;
+}
+
+.has-large-font-size {
+	font-size: 36px;
+}
+
+body {
+	background-color: #a7f8aa;
+}
+
 html {
 	line-height: 1.15;
 	-webkit-text-size-adjust: 100%;
@@ -478,7 +550,7 @@ big {
 /* Elements
 --------------------------------------------- */
 body {
-	background: #fff;
+	/* background: #fff; */
 }
 
 hr {
